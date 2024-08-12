@@ -19,7 +19,8 @@ RUN apk add --no-cache --upgrade \
     bash-completion \
     git \
     openssh-client \
-    docker    
+    docker \
+    kubectl
     
 # Setting WORKDIR and USER 
 USER jenkins
