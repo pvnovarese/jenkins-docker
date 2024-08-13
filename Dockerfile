@@ -21,14 +21,17 @@ RUN apk add --no-cache --upgrade \
     openssh-client \
     docker \
     sudo \
+    kubectl \
     python3 && \
     echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     mkdir -p /usr/local/gcloud && \
     curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tmp/google-cloud-sdk.tar.gz && \
-    tar -C /usr/local/gcloud -xvf /tmp/google-cloud-sdk.tar.gz
+    tar -C /usr/local/gcloud -xvf /tmp/google-cloud-sdk.tar.gz && \
+    /usr/local/gcloud/google-cloud-sdk/install.sh --quiet --usage-reporting false --rc-path /var/jenkins_home/.bashrc --command-completion true --bash-completion true --path-update true --additional-components gke-gcloud-auth-plugin
 
-## need to run /usr/local/gcloud/google-cloud-sdk/install.sh interactively and then run gcloud init
-
+## need to run 
+## gcloud init
+## gcloud container clusters get-credentials <cluster-name> --region=<region>
     
 # Setting WORKDIR and USER 
 USER jenkins
