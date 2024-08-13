@@ -20,7 +20,10 @@ RUN apk add --no-cache --upgrade \
     git \
     openssh-client \
     docker \
-    kubectl
+    kubectl \
+    sudo && \
+    echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
     
 # Setting WORKDIR and USER 
 USER jenkins
