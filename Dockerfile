@@ -21,7 +21,8 @@ RUN apk add --no-cache --upgrade \
     openssh-client \
     docker \
     kubectl \
-    sudo && \
+    sudo \
+    python3 && \
     echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
     
