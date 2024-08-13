@@ -20,10 +20,14 @@ RUN apk add --no-cache --upgrade \
     git \
     openssh-client \
     docker \
-    kubectl \
     sudo \
     python3 && \
-    echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+    echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    mkdir -p /usr/local/gcloud && \
+    curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tmp/google-cloud-sdk.tar.gz &&
+    tar -C /usr/local/gcloud -xvf /tmp/google-cloud-sdk.tar.gz
+
+## need to run /usr/local/gcloud/google-cloud-sdk/install.sh interactively and then run gcloud init
 
     
 # Setting WORKDIR and USER 
