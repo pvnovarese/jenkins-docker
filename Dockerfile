@@ -22,6 +22,7 @@ RUN apk add --no-cache --upgrade \
     docker \
     sudo \
     kubectl \
+    buildctl \
     python3 && \
     echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
     mkdir -p /usr/local/gcloud && \
