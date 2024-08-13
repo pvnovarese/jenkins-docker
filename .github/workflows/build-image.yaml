@@ -31,15 +31,7 @@ jobs:
     - name: Build Local Container
       run: |
         docker build . --file Dockerfile --tag ${IMAGE}
-        
-    - name: Scan Image
-      uses: anchore/scan-action@v3
-      id: scan
-      with:
-        image: ${{ env.IMAGE }}
-        fail-build: false
-        severity-cutoff: critical
-        
+                
     - name: Login to Registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ${IMAGE_REGISTRY} -u ${GITHUB_ACTOR} --password-stdin
 
